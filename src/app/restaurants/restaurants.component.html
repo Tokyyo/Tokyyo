@@ -1,0 +1,45 @@
+<div class="restaurants">
+    <p *ngIf="restaurants" class="count">
+        ZNALEZIONO: {{restaurants.length}}
+    </p>
+    <div class="restaurant-list">
+        <mat-accordion>
+            <ng-container *ngFor="let restaurant of restaurants">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header [collapsedHeight]="'100px'" [expandedHeight]="'150px'">
+                        <mat-panel-title>
+                            <img src="{{ restaurant.image }}" />
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <span class="restaurant-name"> {{ restaurant.name }}
+                                <span class="restuarant-rating">
+                                    {{ restaurant.rating }}
+                                </span>
+                            </span>
+                            <span class="restuarant-desc">{{ restaurant.description }} </span>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <span class="tag mt-1">5-d</span>
+                    <div class="details-container">
+                        <p class="details" matTooltip="Czas dostawy">
+                            <mat-icon class="mr-1" matSuffix>timer</mat-icon>
+                            <span class="mr-2">{{ restaurant.averageDeliveryTimeMinutes }} min.</span>
+                        </p>
+                        <p class="details" matTooltip="Koszt dostawy">
+                            <mat-icon class="mr-1" matSuffix>delivery_dining</mat-icon>
+                            <span class="mr-2">{{ restaurant.deliveryCost }} zł</span>
+                        </p>
+                        <p class="details" matTooltip="Minimalna kwota zmówienia">
+                            <mat-icon class="mr-1" matSuffix>shopping_bag</mat-icon>
+                            <span class="mr-2">{{ restaurant.minimalPrice }} zł</span>
+                        </p>
+                        <button mat-raised-button (click)="chooseRestaurant(restaurant.id)">Wybierz</button>
+                    </div>
+                    <button mat-button>Wybierz</button>
+                    <div class="localization">
+                    </div>
+                </mat-expansion-panel>
+            </ng-container>
+        </mat-accordion>
+    </div>
+</div>

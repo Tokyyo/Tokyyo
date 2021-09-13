@@ -1,0 +1,9 @@
+.shopping-icon {
+    color: #00c569;
+}
+
+.shopping-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 16px;
+}
